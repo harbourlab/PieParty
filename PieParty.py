@@ -26,15 +26,15 @@ def write_to_file(row):
 
 def pick_color(color, percentile, lighten):
     if color[0] == "@":
-        return("#" + color[1:])
+        return_color = ("#" + color[1:])
     else:
         cmap = plt.cm.get_cmap(color)
         rgba = cmap(percentile)
-        hex_color = pl.colors.to_hex(rgba)
-        if lighten < 1:  # 1 is max..
-            return(lighten_color(hex_color, lighten))
-        else:
-            return(hex_color)
+        return_color = pl.colors.to_hex(rgba)
+    if lighten < 1:  # 1 is max..
+        return(lighten_color(return_color, lighten))
+    else:
+        return(return_color)
 
 def csv_to_array(filename):
     with open(filename, 'r') as csvfile:
