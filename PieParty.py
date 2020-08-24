@@ -65,11 +65,11 @@ def plotpie(sizes, colors, coords):
 #matrix_expression = csv_to_array(args["matrix_expression"])
 #output_filename = args["output_filename"] + ".png"
 expression_file = "20200429_scUM_Aggregate_expression.csv"
-coordinates_file = "20200429_scUM_Aggregate_TSNE_coordinates_Class1only.csv"
+coordinates_file = "20200429_scUM_Aggregate_TSNE_coordinates_Class2only.csv"
 genes_files = ["Class2_up_genes.csv", "Class1_up_genes.csv"]
 colors = ["@FF0000", "@0000FF"]
 #colors = ["autumn", "winter"]
-output_filename = "lighten_binary_class1.png"
+output_filename = "lighten_binary_class2.png"
 proportionalize = True  # in case unequal amounts of genes are present in lists, and should be weighted the same (will devide epresion by sample size in file)
 expression_cutoff_proportional = 1  # percentage. needs to be this percentage of total pie chart to be included
 expression_cutoff_value = 0
