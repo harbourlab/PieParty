@@ -1,4 +1,4 @@
-print("PieParty Version 1.1 starting")
+print("PieParty Version 1.2 starting")
 
 ### four places times 10
 import matplotlib.pyplot as plt
@@ -52,30 +52,31 @@ def plotpie(sizes, colors, coords):
     piechart.close()
     os.remove(plot_output_filename)
 
-#parser = argparse.ArgumentParser(description='PieParty_args')
-#parser.add_argument('-c', '--matrix_coordinates', help='provide the coordinates of each cell', required=True, type=str)
-#parser.add_argument('-r', '--matrix_genes_in_order', help='order of genes to be mapped on the color profile', required=True, nargs='+', type=str)
-#parser.add_argument('-g', '--matrix_expression', help='gene expression file', required=True, type=str)
-#parser.add_argument('-o', '--output_filename', help='output file name', required=False, type=str, default="output")
-#parser.add_argument('-color', '--color_spectrum', help='matplotlib color spectrum. default is "viridis", alternatively hex colors can be provided e.g. "#FFFFFF"', required=False, type=str, nargs='+', default="viridis")
-#args = vars(parser.parse_args())
+parser = argparse.ArgumentParser(description='PieParty_args')
+parser.add_argument('-g', '--matrix_expression_file', help='gene expression file', required=True, type=str)
+parser.add_argument('-c', '--matrix_coordinates', help='coordinate file for all cells', required=True, type=str)
+parser.add_argument('-l', '--gene_lists', help='lists of genes to plot. Can be one or multiple', required=True, nargs='+', type=str)
+parser.add_argument('-o', '--output_filename', help='output file name', required=False, type=str, default="output.png")
+parser.add_argument('-color', '--colors', help='list of colors (one per gene lost) or matplotlib color spectrum. default is "viridis", alternatively hex colors can be provided e.g. "@FFFFFF"', required=False, type=str, nargs='+', default=["viridis"])
+parser.add_argument('-p', '--proportionalize', help='True or False. normalize for number of genes in lists, default False', required=False, type=bool, default=False)
+parser.add_argument('-ct', '--cutoff_percentage', help='percentage cutoff to be included in pie charts. Default 1%', required=False, type=float, default=1.0)
+parser.add_argument('-ce', '--cutoff_expression_value', help='Cutoff of expression value can be set. Default 0', required=False, type=float, default=0)
+parser.add_argument('-lc', '--lighten_colors', help='True or False. Lighten colors in pie charts based on gene expression. Default True.', required=False, type=bool, default=True)
+parser.add_argument('-gc', '--lighten_colors_based_on_global', help='True or False. Lighten colors based on global gene expression, default False', required=False, type=bool, default=False)
+parser.add_argument('-pz', '--plot_resolution', help='Plot resolution in pixels. Default 13000', required=False, type=int, default=13000)
+args = vars(parser.parse_args())
 
-#matrix_coordinates = csv_to_array(args["matrix_coordinates"])
-#matrix_order_files = args["matrix_genes_in_order"]
-#matrix_expression = csv_to_array(args["matrix_expression"])
-#output_filename = args["output_filename"] + ".png"
-expression_file = "20200429_scUM_Aggregate_expression.csv"
-coordinates_file = "20200429_scUM_Aggregate_TSNE_coordinates_Class2only.csv"
-genes_files = ["Class2_up_genes.csv", "Class1_up_genes.csv"]
-colors = ["@FF0000", "@0000FF"]
-#colors = ["autumn", "winter"]
-output_filename = "lighten_binary_class2.png"
-proportionalize = True  # in case unequal amounts of genes are present in lists, and should be weighted the same (will devide epresion by sample size in file)
-expression_cutoff_proportional = 1  # percentage. needs to be this percentage of total pie chart to be included
-expression_cutoff_value = 0
-lighten_colors = True
-global_expression_colors = False
-plot_size_in_pixels = 13000  # 2400 is good
+expression_file = args['matrix_expression_file'] #"20200429_scUM_Aggregate_expression.csv"
+coordinates_file = args['matrix_coordinates'] #"20200429_scUM_Aggregate_TSNE_coordinates_Class2only.csv"
+genes_files = args['gene_lists'] #["Class2_up_genes.csv", "Class1_up_genes.csv"]
+output_filename = args['output_filename']#"lighten_binary_class2.png"
+colors = args['colors'] #["@FF0000", "@0000FF"]
+proportionalize = args['proportionalize'] #True  # in case unequal amounts of genes are present in lists, and should be weighted the same (will devide epresion by sample size in file)
+expression_cutoff_proportional = args['cutoff_percentage'] # 1  # percentage. needs to be this percentage of total pie chart to be included
+expression_cutoff_value = args['cutoff_expression_value'] #0
+lighten_colors = args['lighten_colors'] # lightens the colors depending on their expression
+global_expression_colors = args['lighten_colors_based_on_global'] # lightens the color based on all genes in the single cell gene expression dataset.
+plot_size_in_pixels = args['plot_resolution']  # 2400 is good enough in most cases
 
 temp_gene_lists = [csv_to_array(i) for i in genes_files]
 gene_lists = []
