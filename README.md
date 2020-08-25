@@ -17,7 +17,7 @@ python PieParty.py -g expression_file.csv -c cell_coordinates.csv -l genelist1.c
 -g _gene expression file.csv_<br>
 For the expression matrix, you will need a matrix of RNA counts with the cell IDs as columns and           gene names as rows.    The expression matrix column names should match the cell IDs in the UMAP/tSNE coordinate table. In Seurat, this count matrix can be generated from accessing the data under Seurat_Object@assays$RNA@data.
 
--c _cell coordinates.csv._ <br>
+-c _cell coordinates.csv_ <br>
 For the UMAP/tSNE coordinate table, you will need a column for each reduction (UMAP or tSNE) dimension (column 1 = UMAP_1, column 2 = UMAP_2). Row names should be the cell IDs, matching the expression matrix. In Seurat, this data can be accessed under Seurat_Object@reductions$umap@cell.embeddings.
 
 -l _genelist.csv_ <br>
