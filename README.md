@@ -4,7 +4,8 @@
 <img src="https://github.com/harbourlab/PieParty/blob/master/testis.png" width="300">
 
 
-_Requirements: Python 3. Please do not use Python 2._
+_Requirements: Python 3. Please do not use Python 2.<br>
+Python packages required: matplotlib, PIL, colorsys, matplotlib.pyplot_
 
 Usage: 
 <pre>
