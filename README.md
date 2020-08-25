@@ -22,7 +22,7 @@ For the UMAP/tSNE coordinate table, you will need a column for each reduction (U
 -l _genelist.csv_ <br>
 lists of genes that should be plotted (csv). One list is minimum. If more lists are provided, separate coloring can be applied.
 
-<br><br>
+
 
 ### Options (not required):
 
