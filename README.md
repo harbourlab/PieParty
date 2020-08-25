@@ -21,7 +21,7 @@ For the expression matrix, you will need a matrix of RNA counts with the cell ID
 For the UMAP/tSNE coordinate table, you will need a column for each reduction (UMAP or tSNE) dimension (column 1 = UMAP_1, column 2 = UMAP_2). Row names should be the cell IDs, matching the expression matrix. In Seurat, this data can be accessed under Seurat_Object@reductions$umap@cell.embeddings.
 
 -l _genelist.csv_ <br>
-lists of genes that should be plotted (csv). One list is minimum. If more lists are provided, separate coloring can be applied.
+lists of genes that should be plotted (csv). One list is minimum. If more lists are provided, separate coloring can be applied. Gene lists need to be csv files with one column, and one gene per row.
 
 
 
