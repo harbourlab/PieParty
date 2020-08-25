@@ -28,7 +28,8 @@ lists of genes that should be plotted (csv). One list is minimum. If more lists 
 
 -o _output_file_name.png_ <br> Default = "output.png"
 
--color (hex colors or matplotlib colormaps). If multiple gene lists are used same amount of colors should be provided. e.g. "-color autumn" for one gene list, or "-color @FF00FF @FFFF00" for two gene lists. The latter example are hex codes. Colormap names can be found here https://matplotlib.org/tutorials/colors/colormaps.html. Default is "viridis". In case a colormap is chosen, PieParty will auto-assign colors to the genes in the gene lists.
+-color _(hex colors or matplotlib colormaps_ <br>
+If multiple gene lists are used same amount of colors should be provided. e.g. "-color autumn" for one gene list, or "-color @FF00FF @FFFF00" for two gene lists. The latter example are hex codes. Colormap names can be found here https://matplotlib.org/tutorials/colors/colormaps.html. Default is "viridis". In case a colormap is chosen, PieParty will auto-assign colors to the genes in the gene lists.
 
 -p proportionalize (True or False) <br>
 If two or more gene lists are provided, PieParty can normalize for difference in gene amounts in the lists. This is useful in many cases, as lists of e.g. 4 macrophage markers, and 102 keratinocyte markers will produce pie charts that are predomonatelly filled with slices from the keratinocyte markers, although overall each individual marker may be expressed less as the 4 macrophage markers. Default is True.
