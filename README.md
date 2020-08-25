@@ -45,5 +45,5 @@ This setting will lighten the colors of the pie slices according to their expres
 If this is set to True, PieParty will use color intesities reflecting the expression compared to ALL other genes in the single cell dataset. This might lead to very light colored plots in many cases. Default is False.
 
 -pr plot resolution (int). <br>
-Default is 13000, which results in high-resolution plots and reccomended. 2400 is still good enough in most cases and increases computation time.
+Default is 13000, which results in high-resolution plots and reccomended. 2400 is still good enough in most cases and decreases computation time if wished.
 
