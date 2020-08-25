@@ -4,7 +4,7 @@
 <img src="https://github.com/harbourlab/PieParty/blob/master/testis.png" width="300">
 
 
-Requirements: Python 3. Please do not use Python 2.
+_Requirements: Python 3. Please do not use Python 2._
 Usage: python PieParty.py -g expression_file.csv -c cell_coordinates.csv -l genelist1.csv genelist2.csv
 
 
