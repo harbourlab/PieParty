@@ -29,21 +29,21 @@ lists of genes that should be plotted (csv). One list is minimum. If more lists 
 -o _output_file_name.png_ <br> Default = "output.png"
 -color (hex or color vignette). list of colors or any matplotlib color vignettes. If multiple gene lists are used same amount of colors should be provided. e.g. "-color autumn" for one gene list, or "-color @FF00FF @FFFF00" for two gene lists. The latter example are hex codes.
 
--p proportionalize (True or False). <br>
+-p proportionalize (True or False) <br>
 If two or more gene lists are provided, PieParty can normalize for difference in gene amounts in the lists. This is useful in many cases, as lists of e.g. 4 macrophage markers, and 102 keratinocyte markers will produce pie charts that are predomonatelly filled with slices from the keratinocyte markers, although overall each individual marker may be expressed less as the 4 macrophage markers. Default is True.
 
--ct percentage cutoff (float). <br>
+-ct percentage cutoff (float) <br>
 Cutoff percentage of expression in a pie chart a gene has to meet to be included. Default is 1%, meaning if a gene is not expressed at least 1% of the summed expression of all other genes in the pie it is excluded.
 
--ce expression cutoff (float).<br>
+-ce expression cutoff (float) <br>
 If desired, a expression cutoff can be applied. Default is 0. 
 
--lc lighten colors (True or False). <br>
+-lc lighten colors (True or False) <br>
 This setting will lighten the colors of the pie slices according to their expression value. Default is True.
 
 -gc lighten colors based on global (True or False). <br>
 If this is set to True, PieParty will use color intesities reflecting the expression compared to ALL other genes in the single cell dataset. This might lead to very light colored plots in many cases. Default is False.
 
--pr plot resolution (int). <br>
+-pr plot resolution (int) <br>
 Default is 13000, which results in high-resolution plots and reccomended. 2400 is still good enough in most cases and decreases computation time if wished.
 
