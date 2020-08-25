@@ -29,7 +29,7 @@ lists of genes that should be plotted (csv). One list is minimum. If more lists 
 
 -o _output_file_name.png_ <br> Default = "output.png"
 
--color _(hex colors or matplotlib colormaps_ <br>
+-color _(hex colors or matplotlib colormaps)_ <br>
 If multiple gene lists are used same amount of colors should be provided. e.g. "-color autumn" for one gene list, or "-color @FF00FF @FFFF00" for two gene lists. The latter example are hex codes. Colormap names can be found here https://matplotlib.org/tutorials/colors/colormaps.html. Default is "viridis". In case a colormap is chosen, PieParty will auto-assign colors in order according to the genes in the gene lists provided.
 
 -p proportionalize (True or False) <br>
