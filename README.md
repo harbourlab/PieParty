@@ -11,7 +11,7 @@ Usage:
 python PieParty.py -g expression_file.csv -c cell_coordinates.csv -l genelist1.csv genelist2.csv
 </pre>
 
-Options (required):
+### Options (required):
 
 -g _gene expression file.csv_<br>
 For the expression matrix, you will need a matrix of RNA counts with the cell IDs as columns and           gene names as rows.    The expression matrix column names should match the cell IDs in the UMAP/tSNE coordinate table. In Seurat, this count matrix can be generated from accessing the data under Seurat_Object@assays$RNA@data.
@@ -22,8 +22,9 @@ For the UMAP/tSNE coordinate table, you will need a column for each reduction (U
 -l _genelist.csv_ <br>
 lists of genes that should be plotted (csv). One list is minimum. If more lists are provided, separate coloring can be applied.
 
+<br><br>
 
-Options (not required):
+### Options (not required):
 
 -o output file name. Default = "output.png"
 -color (hex or color vignette). list of colors or any matplotlib color vignettes. If multiple gene lists are used same amount of colors should be provided. e.g. "-color autumn" for one gene list, or "-color @FF00FF @FFFF00" for two gene lists. The latter example are hex codes.
