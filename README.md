@@ -44,7 +44,7 @@ If desired, a expression cutoff can be applied. Default is 0.
 -lc lighten colors (True or False) <br>
 This setting will lighten the colors of the pie slices according to their expression value. Default is True.
 
--gc lighten colors based on global (True or False). <br>
+-gc lighten colors based on global (True or False) <br>
 If this is set to True, PieParty will use color intesities reflecting the expression compared to ALL other genes in the single cell dataset. This might lead to very light colored plots in many cases. Default is False.
 
 -pr plot resolution (int) <br>
