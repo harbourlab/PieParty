@@ -1,4 +1,4 @@
-print("PieParty Version 1.2 starting")
+print("PieParty Version 1.3 starting")
 
 ### four places times 10
 import matplotlib.pyplot as plt
@@ -220,10 +220,10 @@ for x, i in enumerate(coordinates_sans_1):  # iterate through all cells
         pie_number_of_genes_in_list = copy.deepcopy(pie_number_of_genes_in_list2)
         while sum(pie_sizes) < 1:  # to plot pie charts the sum has to be at least 1, else the pie is incomplete
             pie_sizes = [s*2 for s in pie_sizes]
-        pie_coordinates = [int((float(i[1]) - x_min) * x_correction_factor), int((float(i[2]) - y_min) * y_correction_factor)]  # x , y
+        pie_coordinates = [int((float(i[1]) - x_min) * x_correction_factor), int(plot_size_in_pixels - (float(i[2]) - y_min) * y_correction_factor)]  # x , y
         colored_pies.append([pie_sizes, pie_colors, pie_coordinates])
     else:
-        pie_coordinates = [int((float(i[1]) - x_min) * x_correction_factor), int((float(i[2]) - y_min) * y_correction_factor)]
+        pie_coordinates = [int((float(i[1]) - x_min) * x_correction_factor), int(plot_size_in_pixels - (float(i[2]) - y_min) * y_correction_factor)]
         grey_pies.append([[1], ["#CCCCCC"], pie_coordinates])
 print("Done calculating! Baking the pies now.")
 background = Image.open(output_filename)
