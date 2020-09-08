@@ -5,7 +5,7 @@
 
 
 _Requirements: Python 3. Please do not use Python 2.<br>
-Python packages required: matplotlib, PIL, colorsys, matplotlib.pyplot_
+Python packages required: matplotlib
 
 Usage: 
 <pre>
