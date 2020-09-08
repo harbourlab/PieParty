@@ -5,7 +5,7 @@
 
 
 _Requirements: Python 3. Please do not use Python 2.<br>
-Python packages required: matplotlib
+Python packages required: matplotlib_
 
 Usage: 
 <pre>
