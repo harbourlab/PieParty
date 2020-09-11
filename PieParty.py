@@ -1,4 +1,4 @@
-print("PieParty Version 1.3 starting")
+print("PieParty Version 1.4 starting")
 
 ### four places times 10
 import matplotlib.pyplot as plt
@@ -58,7 +58,7 @@ parser.add_argument('-c', '--matrix_coordinates', help='coordinate file for all 
 parser.add_argument('-l', '--gene_lists', help='lists of genes to plot. Can be one or multiple', required=True, nargs='+', type=str)
 parser.add_argument('-o', '--output_filename', help='output file name', required=False, type=str, default="output.png")
 parser.add_argument('-color', '--colors', help='list of colors (one per gene lost) or matplotlib color spectrum. default is "viridis", alternatively hex colors can be provided e.g. "@FFFFFF"', required=False, type=str, nargs='+', default=["viridis"])
-parser.add_argument('-p', '--proportionalize', help='True or False. normalize for number of genes in lists, default False', required=False, type=bool, default=False)
+parser.add_argument('-p', '--proportionalize', help='True or False. normalize for number of genes in lists, default False', required=False, type=bool, default=True)
 parser.add_argument('-ct', '--cutoff_percentage', help='percentage cutoff to be included in pie charts. Default 1%', required=False, type=float, default=1.0)
 parser.add_argument('-ce', '--cutoff_expression_value', help='Cutoff of expression value can be set. Default 0', required=False, type=float, default=0)
 parser.add_argument('-lc', '--lighten_colors', help='True or False. Lighten colors in pie charts based on gene expression. Default True.', required=False, type=bool, default=True)
