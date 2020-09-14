@@ -12,6 +12,10 @@ Usage:
 python PieParty.py -g expression_file.csv -c cell_coordinates.csv -l genelist1.csv genelist2.csv
 </pre>
 
+This will generate the following outputs:
+1) The .png picture containing the PieParty figure
+2) "labels.svg" which lists all genes and which colors were assigned
+
 ### Options (required):
 
 -g _gene expression file.csv_<br>
