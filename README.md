@@ -16,6 +16,10 @@ This will generate the following outputs:
 1) The .png picture containing the PieParty figure
 2) "labels.svg" which lists all genes and which colors were assigned
 
+Note:
+While running the PieParty script the command line will issue a warning, as the generated PNG file is very large. The warning is normal and can be ignored. "DecompressionBombWarning: Image size (169000000 pixels) exceeds limit of
+89478485 pixels, could be decompression bomb DOS attack."
+
 ### Options (required):
 
 -g _gene expression file.csv_<br>
