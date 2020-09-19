@@ -7,7 +7,7 @@
 
 <img src="https://github.com/harbourlab/PieParty/blob/master/Screen Shot 2020-09-18 at 8.03.17 PM.png" width="800">
 
-
+Please cite the bioRxiv paper: https://www.biorxiv.org/content/10.1101/2020.08.25.267021v1.article-metrics
 
 _Requirements: Python 3. Please do not use Python 2.<br>
 Python packages required: matplotlib_
