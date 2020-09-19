@@ -3,6 +3,9 @@
 
 <img src="https://github.com/harbourlab/PieParty/blob/master/testis.png" width="300">
 
+<img src="https://github.com/harbourlab/PieParty/blob/master/Screen Shot 2020-09-18 at 8.03.00 PM.png" width="800">
+
+
 
 _Requirements: Python 3. Please do not use Python 2.<br>
 Python packages required: matplotlib_
