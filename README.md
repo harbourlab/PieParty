@@ -17,6 +17,9 @@ Usage:
 python PieParty.py -g expression_file.csv -c cell_coordinates.csv -l genelist1.csv genelist2.csv
 </pre>
 
+PieParty plots depict every cell in single cell plots such as UMAP and tSNE as pie charts, where every slice of the pie chart corresponds to the relative gene expression of one gene. A set of genes can be defined to be plotted, and custom coloring can be defined. Different sets of genes can be used, e.g. one list with macrophage markers, and one list with cancer cell markers. Every list can be assigned a unique color or color palette, e.g. macrophage markers in yellow, and cancer cells in red.
+
+
 This will generate the following outputs:
 1) The .png picture containing the PieParty figure
 2) "labels.svg" which lists all genes and which colors were assigned
@@ -46,7 +49,7 @@ lists of genes that should be plotted (csv). One list is minimum. If more lists 
 If multiple gene lists are used same amount of colors should be provided. e.g. "-color autumn" for one gene list, or "-color @FF00FF @FFFF00" for two gene lists. The latter example are hex codes. Colormap names can be found here https://matplotlib.org/tutorials/colors/colormaps.html. Default is "viridis". In case a colormap is chosen, PieParty will auto-assign colors in order according to the genes in the gene lists provided.
 
 -p proportionalize (True or False) <br>
-If two or more gene lists are provided, PieParty can normalize for difference in gene amounts in the lists. This is useful in many cases, as lists of e.g. 4 macrophage markers, and 102 keratinocyte markers will produce pie charts that are predomonatelly filled with slices from the keratinocyte markers, although overall each individual marker may be expressed less as the 4 macrophage markers. Default is True.
+If two or more gene lists are provided, PieParty can normalize for difference in gene amounts in the lists. This is useful in many cases, as lists of e.g. 4 macrophage markers, and 102 keratinocyte markers will produce pie charts that are predomonatelly filled with slices from the keratinocyte markers, although overall each individual marker may be expressed less as the 4 macrophage markers. The normalized expression value is calculated by multiplication of the expression value with the number of total genes in all lists, divided by the number of genes in the list of the respective gene (N_(gene_list)). Default is True.
 
 -ct percentage cutoff (float) <br>
 Cutoff percentage of expression in a pie chart a gene has to meet to be included. Default is 1%, meaning if a gene is not expressed at least 1% of the summed expression of all other genes in the pie it is excluded.
