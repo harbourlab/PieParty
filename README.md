@@ -66,12 +66,12 @@ If multiple gene lists are provided, and this is set to False, then PieParty wil
 -pr plot resolution (int) <br>
 Default is 13000, which results in high-resolution plots and reccomended. 2400 is still good enough in most cases and decreases computation time if wished.
 
-Example data files:
+### Example data files:
 To may download a small example dataset from this github page (example dataset folder), which includes three files neccessary to run PieParty. Execute PieParty with:
 <pre>
 python PieParty.py -c coordinates_anon.csv -l example_gene_list.csv -g expression_anon.csv
 </pre>
 This should run in about 5 minutes and produce the following output png containing 183 cells:
-<img src="https://github.com/harbourlab/PieParty/blob/master/example_output.png" width="600">
+<img src="https://github.com/harbourlab/PieParty/blob/master/example_output.png" width="300">
 
 
