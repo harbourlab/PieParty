@@ -72,6 +72,7 @@ To may download a small example dataset from this github page (example dataset f
 python PieParty.py -c coordinates_anon.csv -l example_gene_list.csv -g expression_anon.csv
 </pre>
 This should run in about 5 minutes and produce the following output png containing 183 cells:
+
 <img src="https://github.com/harbourlab/PieParty/blob/master/example_output.png" width="300">
 
 
