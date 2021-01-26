@@ -1,4 +1,4 @@
-# PieParty v1.5 - Visualizing cells from scRNA-seq data as pie charts
+# PieParty v1.6 - Visualizing cells from scRNA-seq data as pie charts
 ### PieParty is a visualization tool allowing to represent every cell in single-cell sequencing plots (UMAP, tSNE, ect.) as a pie chart. Each slice in a pie chart represents the expression of a single gene. Custom gene lists and coloring can be applied. 
 
 <img src="https://github.com/harbourlab/PieParty/blob/master/testis.png" width="300">
@@ -61,7 +61,7 @@ If desired, a expression cutoff can be applied. Default is 0.
 This setting will lighten the colors of the pie slices according to their expression value. Default is True.
 
 -gc lighten colors based on global (True or False) <br>
-If multiple gene lists are provided, and this is set to False, then PieParty will lighten the color intensities of pie slices in relation to eperssion of all genes in all gene lists. This might lead to light colored plots in many cases. Default is False, meaning each gene list will be regarded as sepearate.
+If multiple gene lists are used as inputs, it might be desired that PieParty does not use the same scale to lighten the colors of pie slices. For instance, if gene list A has high expressing genes, and gene list B has only low expressing genes, the colors will be very faint for the second list in general. In this case -gc can be set to False, to increase color saturation. PieParty will then use the maximum gene expression value for each list to determinte color saturation. However, be aware that if this is set to False a direct comparison of gene expression is not possible. Default is True.
 
 -pr plot resolution (int) <br>
 Default is 13000, which results in high-resolution plots and reccomended. 2400 is still good enough in most cases and decreases computation time if wished.
