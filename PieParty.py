@@ -4,16 +4,15 @@
 # In[1]:
 
 
-# make lighten colors so that there is one max color per pie chart, and not per all pies in a plot
 color_greys_as_clusters = True  # this will be used to color each cluster uniquely down the road
 
 
 # for testing purposes in e.g. Jupyter
 #import ipywidgets as widgets   # this is for the progress bar
 #expression_file = "20200429_scUM_Aggregate_expression.csv"
-#coordinates_file = "20200506_scUM_Aggregate_TSNE_coordinates.csv" # faked
-#genes_files = ["Class1_up_genes.csv", "Class2_up_genes.csv"] # no need to fake
-#cluster_information_file = "clusters.csv" # no need to fake
+#coordinates_file = "20200506_scUM_Aggregate_TSNE_coordinates.csv"
+#genes_files = ["Class1_up_genes.csv", "Class2_up_genes.csv"]
+#cluster_information_file = "clusters.csv"
 #giant_pies = 'True'
 #output_filename = "output.png"
 #colors = ["winter", "autumn"]
@@ -26,12 +25,8 @@ color_greys_as_clusters = True  # this will be used to color each cluster unique
 #color_greys_as_clusters = 'True'
 
 
-# In[2]:
-
-
 ## (I)  the basics.. import, make matrices..
-
-print("PieParty Version 1.6 starting")
+print("PieParty Version 1.7 starting")
 print("... Note: You might get a system warning (bomb DOS attack warning), which is due to the high resolution of the output image. Can be ignored")
 
 import matplotlib.pyplot as plt
@@ -63,7 +58,7 @@ def pick_color(color, percentile, lighten):
         return_color = ("#" + color[1:])
     else:
         cmap = plt.cm.get_cmap(color)
-        rgba = cmap(percentile)
+        rgba = cmap(percentile)  
         return_color = pl.colors.to_hex(rgba)
     if lighten < 1:  # 1 is max..
         return(lighten_color(return_color, lighten))
@@ -82,8 +77,8 @@ def plotpie(sizes, colors, coords, piechart_size):
     plt.clf()
     piechart = Image.open(plot_output_filename)
     piechart.thumbnail(piechart_size, Image.ANTIALIAS)  # size is the pie chart size
-    background.paste(piechart, (coords[0], coords[1]), piechart)
-    #background.paste(piechart, (int(float(coords[0]) - (piechart_size[0] * 0.510)), int(float(coords[1]) - (piechart_size[1] * 0.331))), piechart)
+    #background.paste(piechart, (coords[0], coords[1]), piechart)
+    background.paste(piechart, (int(float(coords[0]) - (piechart_size[0] * 0.510)), int(float(coords[1]) - (piechart_size[1] * 0.331))), piechart)
     piechart.close()
     os.remove(plot_output_filename)
 
@@ -131,8 +126,8 @@ parser.add_argument('-p', '--proportionalize', help='True or False. normalize fo
 parser.add_argument('-ct', '--cutoff_percentage', help='percentage cutoff to be included in pie charts. Default 1%', required=False, type=float, default=1.0)
 parser.add_argument('-ce', '--cutoff_expression_value', help='Cutoff of expression value can be set. Default 0', required=False, type=float, default=0)
 parser.add_argument('-lc', '--lighten_colors', help='True or False. Lighten colors in pie charts based on gene expression. Default True.', required=False, type=str, default='True')
-parser.add_argument('-gc', '--lighten_colors_based_on_global', help='True or False. Lighten colors based on global gene expression, default True', required=False, type=str, default='True')
-parser.add_argument('-pz', '--plot_resolution', help='Plot resolution in pixels. Default 12000', required=False, type=int, default=11800)
+parser.add_argument('-gc', '--lighten_colors_based_on_global', help='True or False. Lighten colors based on global gene expression, default: True', required=False, type=str, default='True')
+parser.add_argument('-pz', '--plot_resolution', help='Plot resolution in pixels. Default 11800', required=False, type=int, default=11800)
 parser.add_argument('-gp', '--giant_pies', help='Plot one pie chart per cluster', required=False, type=str, default='False')
 parser.add_argument('-cf', '--cluster_file', help='File with cluster information for every cell', required=False, type=str)
 args = vars(parser.parse_args())
@@ -201,7 +196,7 @@ small_pie_size = 30*plot_size_in_pixels/2400, 30*plot_size_in_pixels/2400  # siz
 print("... Gathered all ingredients, mixing the dough now")
 
 
-# In[3]:
+# In[2]:
 
 
 ###### if big pies should be plotted, we are making new "fake" matrices here to feed into the pipeline #############
@@ -212,7 +207,7 @@ if giant_pies == 'True':
     for x, i in enumerate(cluster_information):
         if x > 0: # exclude header in first row
             if str(i[1]) not in unique_clusters:
-                unique_clusters.append(str(i[1])) # str allows for various cluster names
+                unique_clusters.append(str(i[1])) # str allows for various cluster names           
 #check
 
     # 2) Get coordinates of all cells per cluster, to make an average, keeps sorting as in unique_clusters
@@ -287,7 +282,8 @@ if giant_pies == 'True':
     
 
 
-# In[4]:
+# In[3]:
+
 
 # code starts here
 
@@ -419,7 +415,7 @@ for x, i in enumerate(colored_pies):
     if giant_pies == 'False':
         plotpie(i[0], i[1], i[2], small_pie_size)
     elif giant_pies == 'True':
-        custom = int(small_pie_size[0] * np.sqrt(len(all_cells_in_clusters[x])))/20
+        custom = int(small_pie_size[0] * np.sqrt(len(all_cells_in_clusters[x])))/4
         custom_size = custom, custom
         plotpie(i[0], i[1], i[2], custom_size)
     else:
@@ -434,3 +430,10 @@ print("... Generating the labels file")
 make_the_labels_file()
 
 print("All done! Enjoy!")
+
+
+# In[ ]:
+
+
+
+
