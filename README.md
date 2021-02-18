@@ -7,6 +7,8 @@
 
 <img src="https://github.com/harbourlab/PieParty/blob/master/Screen Shot 2020-09-18 at 8.03.17 PM.png" width="800">
 
+<img src="https://github.com/harbourlab/PieParty/blob/master/2_t6_giant_pies.png" width="300">
+
 Please cite the bioRxiv paper: https://www.biorxiv.org/content/10.1101/2020.08.25.267021v1.article-metrics
 
 _Requirements: Python 3. Please do not use Python 2.<br>
@@ -65,6 +67,15 @@ If multiple gene lists are used as inputs, it might be desired that PieParty doe
 
 -pr plot resolution (int) <br>
 Default is 13000, which results in high-resolution plots and reccomended. 2400 is still good enough in most cases and decreases computation time if wished.
+
+-gp plot giant pies (True, False) <br>
+Set this to "True" to plot one giant pie per cell cluster. The size of the pie chart will correlate with the number of cells in the cluster. 
+Plotting giant pies requires a csv file defining which cell (1st column) is in which cluster (2nd column). The cluster file has to be defined with "-cf". I reccoment trying this without the lighten colors function too, as depending on your dataset the giant pies will be light in color.
+Usage example:
+<pre>
+python PieParty.py -g expression_file.csv -c cell_coordinates.csv -l genelist1.csv genelist2.csv -gp True -cf clusters.csv -lc False
+</pre>
+
 
 ### Example data files:
 To may download a small example dataset from this github page (example dataset folder), which includes three files neccessary to run PieParty. Execute PieParty with:
