@@ -71,6 +71,8 @@ Default is 13000, which results in high-resolution plots and reccomended. 2400 i
 -gp plot giant pies (True, False) <br>
 Set this to "True" to plot one giant pie per cell cluster. The size of the pie chart will correlate with the number of cells in the cluster. 
 Plotting giant pies requires a csv file defining which cell (1st column) is in which cluster (2nd column). The cluster file has to be defined with "-cf". I reccoment trying this without the lighten colors function too, as depending on your dataset the giant pies will be light in color.
+The coordinates file can be exported as a csv file in R with “write.csv(SeuratObject@reductions$umap@cell.embeddings, file = "SeuratObject_UMAPcoordinates.csv”)”
+
 Usage example:
 <pre>
 python PieParty.py -g expression_file.csv -c cell_coordinates.csv -l genelist1.csv genelist2.csv -gp True -cf clusters.csv -lc False
