@@ -9,7 +9,8 @@
 
 <img src="https://github.com/harbourlab/PieParty/blob/master/2_t6_giant_pies.png" width="300">
 
-Please cite the bioRxiv paper: https://www.biorxiv.org/content/10.1101/2020.08.25.267021v1.article-metrics
+Please cite:
+Kurtenbach, S., Dollar, J. J., Cruz, A. M., Durante, M. A., Decatur, C. L., and Harbour, J. W.; PieParty: visualizing cells from scRNA-seq data as pie charts; Life Sci Alliance; 5 4 2021
 
 _Requirements: Python 3. Please do not use Python 2.<br>
 Python packages required: matplotlib_
