@@ -99,22 +99,23 @@ def make_the_labels_file():
         os.remove(labels_file_name)
     write_to_labels_file('''<svg viewBox="0 0 320 1000" xmlns="http://www.w3.org/2000/svg">''')
     y_coord = 20
+
     for y, gene_list in enumerate(gene_lists):
         y_coord += 15
         for x, gene in enumerate(gene_list):
-            percentile = (x / (len(gene_list)))
+            percentile = (x / (len(gene_list)))  # this picks the base color on a spectrum
             color = pick_color(colors[y], percentile, 1)
-            write_to_file(draw_rect(20, y_coord, color, 10, 10, "100"))
+            write_to_labels_file(draw_rect(20, y_coord, color, 10, 10, "100"))
             if lighten_colors == 'True':
                 color = pick_color(colors[y], percentile, 0.66)
-                write_to_file(draw_rect(30, y_coord, color, 10, 10, "100"))
+                write_to_labels_file(draw_rect(30, y_coord, color, 10, 10, "100"))
                 color = pick_color(colors[y], percentile, 0.25)
-                write_to_file(draw_rect(40, y_coord, color, 10, 10, "100"))
-                write_to_file('''<text text-anchor="start" font-family="Arial" x="55" y="''' + str(y_coord-2) + '''" font-size="8" >''' + gene + '''</text>''')
+                write_to_labels_file(draw_rect(40, y_coord, color, 10, 10, "100"))
+                write_to_labels_file('''<text text-anchor="start" font-family="Arial" x="55" y="''' + str(y_coord-2) + '''" font-size="8" >''' + gene + '''</text>''')
             else:
-                write_to_file('''<text text-anchor="start" font-family="Arial" x="35" y="''' + str(y_coord-2) + '''" font-size="8" >''' + gene + '''</text>''')
+                write_to_labels_file('''<text text-anchor="start" font-family="Arial" x="35" y="''' + str(y_coord-2) + '''" font-size="8" >''' + gene + '''</text>''')
             y_coord += 15
-    write_to_file("</svg>")
+    write_to_labels_file("</svg>")
 
 parser = argparse.ArgumentParser(description='PieParty_args')
 parser.add_argument('-g', '--matrix_expression_file', help='gene expression file', required=True, type=str)
@@ -158,7 +159,7 @@ if giant_pies == 'True':
 if os.path.exists(output_filename):
     os.remove(output_filename)
 
-labels_file_name = "labels_" + output_filename[-4:] +".svg"
+labels_file_name = "labels_" + output_filename[:-4] +".svg"
 ###################################### this prepares all the matrices used #################################################
 temp_gene_lists = [csv_to_array(i) for i in genes_files]
 gene_lists = []
