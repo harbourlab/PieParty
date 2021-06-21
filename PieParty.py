@@ -26,7 +26,7 @@ color_greys_as_clusters = True  # this will be used to color each cluster unique
 
 
 ## (I)  the basics.. import, make matrices..
-print("PieParty Version 1.7 starting")
+print("PieParty Version 1.7.1 starting")
 print("... Note: You might get a system warning (bomb DOS attack warning), which is due to the high resolution of the output image. Can be ignored")
 
 import matplotlib.pyplot as plt
