@@ -1,4 +1,4 @@
-# PieParty v1.7.1 - Visualizing cells from scRNA-seq data as pie charts
+# PieParty v1.7.2 - Visualizing cells from scRNA-seq data as pie charts
 ### PieParty is a visualization tool allowing to represent every cell in single-cell sequencing plots (UMAP, tSNE, ect.) as a pie chart. Each slice in a pie chart represents the expression of a single gene. Custom gene lists and coloring can be applied. 
 
 <img src="https://github.com/harbourlab/PieParty/blob/master/testis.png" width="300">
@@ -78,6 +78,10 @@ Set this to "True" to plot one giant pie per cell cluster. The size of the pie c
 Plotting giant pies requires a csv file defining which cell (1st column) is in which cluster (2nd column). The cluster file has to be defined with "-cf". I reccoment trying this without the lighten colors function "-lc False", as depending on your dataset the giant pies will be light in color.
 The coordinates file can be exported as a csv file in R with “write.csv(SeuratObject@reductions$umap@cell.embeddings, file = "SeuratObject_UMAPcoordinates.csv”)”
 
+-ps pie scaling (float) <br>
+Scaling factor by which the pie sizes are multiplied with. 
+
+
 Usage example:
 <pre>
 python PieParty.py -g expression_file.csv -c cell_coordinates.csv -l genelist1.csv genelist2.csv -gp True -cf clusters.csv -lc False
@@ -85,7 +89,7 @@ python PieParty.py -g expression_file.csv -c cell_coordinates.csv -l genelist1.c
 
 
 ### Example data files:
-To may download a small example dataset from this github page (example dataset folder), which includes three files neccessary to run PieParty. Execute PieParty with:
+You can download a small example dataset from this github page (example dataset folder), which includes three files neccessary to run PieParty. Execute PieParty with:
 <pre>
 python PieParty.py -c coordinates_anon.csv -l example_gene_list.csv -g expression_anon.csv
 </pre>
