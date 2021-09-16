@@ -26,7 +26,7 @@ color_greys_as_clusters = True  # this will be used to color each cluster unique
 
 
 ## (I)  the basics.. import, make matrices..
-print("PieParty Version 1.7.1 starting")
+print("PieParty Version 1.7.2 starting")
 print("... Note: You might get a system warning (bomb DOS attack warning), which is due to the high resolution of the output image. Can be ignored")
 
 import matplotlib.pyplot as plt
@@ -131,9 +131,11 @@ parser.add_argument('-gc', '--lighten_colors_based_on_global', help='True or Fal
 parser.add_argument('-pz', '--plot_resolution', help='Plot resolution in pixels. Default 11800', required=False, type=int, default=11800)
 parser.add_argument('-gp', '--giant_pies', help='Plot one pie chart per cluster', required=False, type=str, default='False')
 parser.add_argument('-cf', '--cluster_file', help='File with cluster information for every cell', required=False, type=str)
+parser.add_argument('-ps', '--pie_sizes_scaling_factor', help='multiplies the standard pie size by this factor', required=False, type=float, default=1)
 args = vars(parser.parse_args())
 
 expression_file = args['matrix_expression_file'] #"20200429_scUM_Aggregate_expression.csv"
+pie_size_scaling_factor = args['pie_sizes_scaling_factor']
 coordinates_file = args['matrix_coordinates'] #"20200429_scUM_Aggregate_TSNE_coordinates_Class2only.csv"
 genes_files = args['gene_lists'] #["Class2_up_genes.csv", "Class1_up_genes.csv"]
 cluster_information_file = args['cluster_file']
@@ -192,7 +194,7 @@ y_correction_factor = plot_size_in_pixels/y_stretch
 img = Image.new('RGB', (int(plot_size_in_pixels*1.1), int(plot_size_in_pixels*1.1)), (255, 255, 255))  # *1.1 to add a white border
 img.save(output_filename, "PNG")
 
-small_pie_size = 30*plot_size_in_pixels/2400, 30*plot_size_in_pixels/2400  # size of pies
+small_pie_size = pie_size_scaling_factor*30*plot_size_in_pixels/2400, 30*plot_size_in_pixels/2400  # size of pies
 
 print("... Gathered all ingredients, mixing the dough now")
 
