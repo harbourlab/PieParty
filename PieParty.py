@@ -26,7 +26,7 @@ color_greys_as_clusters = True  # this will be used to color each cluster unique
 
 
 ## (I)  the basics.. import, make matrices..
-print("PieParty Version 1.7.2 starting")
+print("PieParty Version 1.7.3 starting")
 print("... Note: You might get a system warning (bomb DOS attack warning), which is due to the high resolution of the output image. Can be ignored")
 
 import matplotlib.pyplot as plt
@@ -187,14 +187,13 @@ y_min = min(y_values)
 y_max = max(y_values)
 x_stretch = x_max - x_min
 y_stretch = y_max - y_min
-x_correction_factor = plot_size_in_pixels/x_stretch
-y_correction_factor = plot_size_in_pixels/y_stretch
+small_pie_size = pie_size_scaling_factor*30*plot_size_in_pixels/2400, pie_size_scaling_factor*30*plot_size_in_pixels/2400  # size of pie
+x_correction_factor = plot_size_in_pixels/x_stretch # small pie size is substracted to leave a white border. (one pie size will be added when plotting)
+y_correction_factor = plot_size_in_pixels/y_stretch # small pie size is substracted to leave a white border. (one pie size will be added when plotting)
 
 #make empty background
 img = Image.new('RGB', (int(plot_size_in_pixels*1.1), int(plot_size_in_pixels*1.1)), (255, 255, 255))  # *1.1 to add a white border
 img.save(output_filename, "PNG")
-
-small_pie_size = pie_size_scaling_factor*30*plot_size_in_pixels/2400, 30*plot_size_in_pixels/2400  # size of pies
 
 print("... Gathered all ingredients, mixing the dough now")
 
@@ -258,7 +257,10 @@ if giant_pies == 'True':
     background = Image.open(output_filename)
     size = small_pie_size # defines pie size
     for x, i in enumerate(coordinates_sans_1):
-        pie_coordinates = [int((float(i[1]) - x_min) * x_correction_factor), int(plot_size_in_pixels - (float(i[2]) - y_min) * y_correction_factor)]
+        pie_coordinate_x = (float(i[1]) - x_min) * x_correction_factor
+        pie_coordinate_y = plot_size_in_pixels - (float(i[2]) - y_min) * y_correction_factor
+        pie_coordinates = [int(pie_coordinate_x), int(pie_coordinate_y)]  # adds small pie size to leave white ring (above all was scaled down to stretch - 2 small pies)
+
         if color_greys_as_clusters == 'True':
             grey_pies.append([["#CCCCCC"], pie_coordinates])
         else:
@@ -400,10 +402,10 @@ for x, i in enumerate(coordinates_sans_1):  # iterate through all cells
         pie_number_of_genes_in_list = copy.deepcopy(pie_number_of_genes_in_list2)
         while sum(pie_sizes) < 1:  # to plot pie charts the sum has to be at least 1, else the pie is incomplete
             pie_sizes = [s*2 for s in pie_sizes]
-        pie_coordinates = [int((float(i[1]) - x_min) * x_correction_factor), int(plot_size_in_pixels - (float(i[2]) - y_min) * y_correction_factor)]  # x , y
+        pie_coordinates = [int((float(i[1]) - x_min) * x_correction_factor + 500), int(plot_size_in_pixels - (float(i[2]) - y_min) * y_correction_factor + 300)]  # x , y
         colored_pies.append([pie_sizes, pie_colors, pie_coordinates])
     else:
-        pie_coordinates = [int((float(i[1]) - x_min) * x_correction_factor), int(plot_size_in_pixels - (float(i[2]) - y_min) * y_correction_factor)]  #large y values are high up
+        pie_coordinates = [int((float(i[1]) - x_min) * x_correction_factor + 500), int(plot_size_in_pixels - (float(i[2]) - y_min) * y_correction_factor + 300)]
         grey_pies_coordinates.append(pie_coordinates)
 
 print("... done mixing the ingredients. Baking the pies now!")
