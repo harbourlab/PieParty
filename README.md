@@ -1,4 +1,4 @@
-# PieParty v1.7.2 - Visualizing cells from scRNA-seq data as pie charts
+# PieParty v1.7.3 - Visualizing cells from scRNA-seq data as pie charts
 ### PieParty is a visualization tool allowing to represent every cell in single-cell sequencing plots (UMAP, tSNE, ect.) as a pie chart. Each slice in a pie chart represents the expression of a single gene. Custom gene lists and coloring can be applied. 
 
 <img src="https://github.com/harbourlab/PieParty/blob/master/testis.png" width="300">
